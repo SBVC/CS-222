@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 
 template < typename T, typename Comparitor>
 class mergeSort
