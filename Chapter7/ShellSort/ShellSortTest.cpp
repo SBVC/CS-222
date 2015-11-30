@@ -11,16 +11,18 @@ void printIntArray(int array[], int length) {
 
 int main() {
     int array[] = { 38, 199, 28, 11, 12, 68, 12, 92, 92, 100, 3, 72, 47, 49, 48 };
+    //int array[] = { 38, 199, 28, 11, 12, 68 };
+    int length = sizeof(array) / sizeof(array[0]);
 
     std::cout << "Before sort: ";
-    printIntArray(array, 15);
+    printIntArray(array, length);
 
     shellSort<int, IntCompare> sorter;
 
-    sorter.sort(array, 15);
+    sorter.sort(array, length);
 
     std::cout << "After sort: ";
-    printIntArray(array, 15);
+    printIntArray(array, length);
 
     return 0;
 }

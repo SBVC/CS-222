@@ -1,23 +1,28 @@
 #pragma once
+#include <iostream>
 
 template <typename T, typename Comparitor>
 class shellSort {
     private:
         void insertionSort(T array[], int length, int increment) {
-            // for everything we're comparing this iteration
-            for (int i = increment; i < length; i += increment) //NOTE may be an error, doesn't check last value?
-                // for everything that isn't sorted (I don't understand this part...)
-                for (int j = i; (j >= increment) && Comparitor::hasPriority(array[j], array[j-increment]); j -= increment) {
-                    // swap the values
-                    T swap = array[j];
-                    array[j] = array[j-increment];
-                    array[j-increment] = swap;
+            for (int i = 0; i < length - increment; i += increment) {
+                for (int j = i + increment; j < length; j += increment) {
+                    //std::cout << "Comparing " << array[i] << " and " << array[j] << std::endl;
+                    if (Comparitor::hasPriority(array[j], array[i])) {
+                        //std::cout << "Swaping." << std::endl;
+                        T swap = array[i];
+                        array[i] = array[j];
+                        array[j] = swap;
+                    }
                 }
+            }
         }
+
     public:
         void sort(T array[], int length) {
-            for (int i = length/2; i > 2; i /= 2) // for each increment, each pass
-                for (int j = 0; j < i; j++)       // sort each sublist
-                    insertionSort(&array[j], length-j, i); // I don't understand this part
+            for (int i = length / 2; i > 0; i /= 2) {
+                //std::cout << "Comparing at increment " << i << std::endl;
+                insertionSort(array, length, i);
+            }
         }
 };
