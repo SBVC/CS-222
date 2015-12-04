@@ -43,7 +43,7 @@ int main() {
 	i = __rdtsc() - i;
 
 	std::cout << "After sort: ";
-	printIntArray(array, length);
+	printIntArray(array2, length2);
 	std::cout << "This sort took " << i << " clock cycles." << std::endl;;
 
     return 0;

@@ -11,7 +11,7 @@ private:
 		array[position2] = temp;
 	}
 
-	void insertionSort(T array[], int length, int increment) 
+	void incrementedInsertionSort(T array[], int length, int increment) 
 	{
 		for (int i = increment; i < length; i += increment) 
 		{
@@ -22,15 +22,26 @@ private:
 		}
 	}
 
+	void insertionSort(T array[], int length)
+	{
+		for (int i = 1; i < length; i++)
+		{
+			for (int j = i; ((j>0) && (Comparitor::hasPriority(array[j], array[j-1]))); j--)
+			{
+				swap(array, j, j-1);
+			}
+		}
+	}
+
 public:
 	void sort(T array[], int length) 
 	{
-		for (int i = length / 2; i > 2; i /= 2) 
+		for (int i = length / 2; i > 1; i /= 2) 
 		{
 			for (int j = 0; j < i; j++)
-				{insertionSort(array, length-j, i);}
+				{incrementedInsertionSort(array, length-j, i);}
 		}
 
-		insertionSort(array, length, 1);
+		insertionSort(array, length);
 	}
 };
