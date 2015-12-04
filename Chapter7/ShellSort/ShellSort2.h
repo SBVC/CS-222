@@ -15,23 +15,13 @@ private:
 	{
 		for (int i = increment; i < length; i += increment) 
 		{
-			for (int j = i; (j > increment) && (Comparitor::hasPriority(array[j], array[j-increment])); j -= increment) 
+			for (int j = i; (j >= increment) && (Comparitor::hasPriority(array[j], array[j-increment])); j -= increment) 
 			{
 					swap(array, j, j-increment);
 			}
 		}
 	}
 
-	void insertionSort(T array[], int length)
-	{
-		for (int i = 1; i < length; i++)
-		{
-			for (int j = i; ((j>0) && (Comparitor::hasPriority(array[j], array[j-1]))); j--)
-			{
-				swap(array, j, j-1);
-			}
-		}
-	}
 
 public:
 	void sort(T array[], int length) 
@@ -42,6 +32,6 @@ public:
 				{incrementedInsertionSort(array, length-j, i);}
 		}
 
-		insertionSort(array, length);
+		incrementedInsertionSort(array, length, 1);
 	}
 };
