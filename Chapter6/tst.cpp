@@ -61,7 +61,7 @@ void TST::traverseTST() {
 
 //Search for a given word in the tree
 int TST::searchTST(char *word) {
-	searchTSTPrivate(root, word);
+	return searchTSTPrivate(root, word);
 }
 //Use buffer to pass to private function again
 int TST::searchTSTPrivate(node *root, char *word) {

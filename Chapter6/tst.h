@@ -4,7 +4,7 @@ class TST {
 private:
 	struct node {
 		char data;
-		unsigned isEndOfString : 1;
+		int isEndOfString = 0;
 		node *left, *eq, *right;
 	};
 

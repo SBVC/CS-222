@@ -2,7 +2,7 @@
 #include <cstdlib>
 #define MAX 50
 
-#include "tst.cpp"
+#include "tst.h"
 
 using namespace std;
 
